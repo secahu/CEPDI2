@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Version = System.Configuration.ConfigurationManager.AppSettings["version"];
+
+}
+
+
+
+@section Scripts {
+
+    <script src="~/Scripts/pages/Usuarios/Index.js?V=@ViewBag.Version"></script>
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title float-start">@ViewBag.Title</h4>
+                <!-- Button trigger modal -->
+                <button type="button" onclick="botones(1)" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#ModalAdd">
+                    Nuevo
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="lista" class="table table-bordered table-striped"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="form" name="form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalAddLabel">Crear elemento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="mb-3" hidden>
+                            <label for="id" class="form-label">Id</label>
+                            <input type="text" class="form-control" id="id">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required placeholder="Escribe el nombre del usuario">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="usuario" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="usuario" required placeholder="Escribe el usuario">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,}$" required placeholder="Escribe el password del usuario">
+                        </div>
+                        
+                        <div class="col-12 mb-3">
+                            <label for="idperfil" class="form-label">Perfil</label>
+                            <select class="form-control" id="idperfil" required placeholder="Escribe el password del usuario">
+                                <option value="1">Administrador</option>
+                                <option value="2">Lectura</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="estatus" class="form-label">Habilitado</label>
+                            <input type="checkbox" id="estatus" name="estatus" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btncancelar" name="btncancelar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="buttonAdd" class="btn btn-primary" onclick="btnAdd()">Guardar</button>
+                    <button type="button" id="buttonSave" class="btn btn-primary" onclick="btnSave()">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

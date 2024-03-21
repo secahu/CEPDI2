@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@section Scripts {
+
+    <script src="~/Scripts/pages/Home/Index.js"></script>
+}
+
+<main class="form-signin">
+    <form onsubmit="login(event)" id="form" name="form">
+        <h1 class="h3 mb-3 fw-normal">Farmacéutica SCH</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario" required>
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <!--<input type="checkbox" value="remember-me"> Remember me-->
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" id="btn_iniciar">Iniciar sesión</button>
+        <img src="~/Content/images/cargando.gif" width="100px" height="100px" id="cargando">
+
+    </form>
+</main>

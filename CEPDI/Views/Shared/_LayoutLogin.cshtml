@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Version = System.Configuration.ConfigurationManager.AppSettings["version"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - farmacéutica SCH</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Login.css" rel="stylesheet" />
+
+</head>
+<body class="text-center">
+
+    <div class="container body-content">
+        @RenderBody()
+        <footer class="fixed-bottom">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - farmacéutica SCH</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/Pages/Configuracion/Configuracion.js?v=@ViewBag.Version"></script>
+    <script>
+        var ruta_api = @System.Configuration.ConfigurationManager.AppSettings["ruta_api"];
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sweetalert")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

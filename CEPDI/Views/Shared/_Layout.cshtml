@@ -1,0 +1,65 @@
+﻿@{ 
+    ViewBag.Version = System.Configuration.ConfigurationManager.AppSettings["version"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - farmacéutica SCH</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <!--<a class="nav-link active" aria-current="page" href="~/Usuarios">Usuarios</a>-->
+                        @Html.ActionLink("Usuarios", "Index", new { controller = "Usuarios" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        <!--<a class="nav-link" href="~/Medicinas">Medicinas</a>-->
+                        @Html.ActionLink("Medicamentos", "Index", new { controller = "Medicinas" }, new { @class = "nav-link" })
+
+                    </li>
+                </ul>
+
+                <label class="m-auto"><img src="~/Content/images/user.svg" width="25px" height="25px" /> @Session["Nombre"] </label>
+                @Html.ActionLink("Salir", "Logout", new { controller = "Usuarios" }, new { @class = "nav-link" })
+
+                <!--<form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>-->
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content mt-5 mb-5">
+        @RenderBody()
+        <hr />
+        <footer class="container fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p>&copy; @DateTime.Now.Year - farmacéutica SCH</p>
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/Pages/Configuracion/Configuracion.js?v=@ViewBag.Version"></script>
+    <script>
+        var ruta_api = @System.Configuration.ConfigurationManager.AppSettings["ruta_api"];
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/sweetalert")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
